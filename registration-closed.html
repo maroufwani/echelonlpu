@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Closed | Echelon</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .closed-page {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: var(--bg-color);
+            position: relative;
+            overflow: hidden;
+            margin-top: 70px; /* Offset for fixed navbar */
+            padding: 0 20px;
+        }
+        
+        .closed-icon {
+            font-size: 8rem;
+            color: var(--secondary-color);
+            text-shadow: 0 0 20px var(--secondary-color);
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        .closed-title {
+            font-size: 3rem;
+            font-family: var(--font-heading);
+            color: var(--primary-color);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px var(--primary-color);
+        }
+
+        .closed-subtitle {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 30px;
+            font-family: var(--font-heading);
+            letter-spacing: 2px;
+        }
+
+        .closed-desc {
+            color: var(--text-color);
+            margin-bottom: 40px;
+            max-width: 600px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Fix for button consistency */
+        .btn-explore {
+            padding: 10px 25px;
+            font-size: 0.9rem;
+            border-width: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .closed-title {
+                font-size: 2rem;
+                word-wrap: break-word;
+                hyphens: auto;
+            }
+            .closed-subtitle {
+                font-size: 1.2rem;
+            }
+            .closed-desc {
+                font-size: 1rem;
+            }
+            .closed-icon {
+                font-size: 5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">ECHELON<span class="dot">.</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <a href="join.html" class="btn-cta">Join Echelon</a>
+            <button class="mobile-toggle" aria-label="Toggle navigation">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Closed Content -->
+    <section class="closed-page">
+        <div id="particles-js" style="position: absolute; width: 100%; height: 100%; z-index: 0;"></div>
+        <div style="z-index: 1; position: relative;">
+            <i class="fas fa-lock closed-icon"></i>
+            <h1 class="closed-title">Registration Closed</h1>
+            <h2 class="closed-subtitle">ACCESS TEMPORARILY SUSPENDED</h2>
+            <p class="closed-desc">
+                The recruitment window for the current cycle has officially closed. We appreciate your overwhelming interest in joining Echelon. 
+                <br><br>
+                Our team is currently reviewing applications. Please stay tuned to our social media channels for announcements regarding future intakes and upcoming open events.
+            </p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="index.html" class="btn-cta">Return to Base</a>
+                <a href="contact.html" class="btn-explore">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">ECHELON</div>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/echelon.lpu/"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                </div>
+                <p>&copy; 2025 Echelon Student Organization. All Rights Reserved.</p>
+                <p style="font-size: 0.8rem; margin-top: 10px; color: #777;">Developed by <a href="https://www.wani.eu.org" target="_blank" style="color: var(--primary-color);">Marouf Wani</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

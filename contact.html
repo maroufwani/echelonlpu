@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Echelon</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">ECHELON<span class="dot">.</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+            </ul>
+            <a href="registration-closed.html" class="btn-cta">Join Echelon</a>
+            <button class="mobile-toggle" aria-label="Toggle navigation">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact" style="padding-top: 150px;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get In <span class="highlight">Touch</span></h2>
+                <div class="separator"></div>
+            </div>
+            <div class="contact-wrapper">
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" required>
+                        <label for="name">Name</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" required>
+                        <label for="email">Email</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" required></textarea>
+                        <label for="message">Message</label>
+                        <div class="bar"></div>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" style="padding: 100px 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked <span class="highlight">Questions</span></h2>
+                <div class="separator"></div>
+            </div>
+            <div class="faq-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 50px;">
+                <div class="faq-item" style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px;">
+                    <h3 style="color: #fff; margin-bottom: 10px;">How can I join Echelon?</h3>
+                    <p style="color: var(--text-color);">You can join by filling out the membership form during our recruitment drive or contacting us directly.</p>
+                </div>
+                <div class="faq-item" style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px;">
+                    <h3 style="color: #fff; margin-bottom: 10px;">Are events open to everyone?</h3>
+                    <p style="color: var(--text-color);">Yes! Most of our workshops and hackathons are open to students from all departments and colleges.</p>
+                </div>
+                <div class="faq-item" style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px;">
+                    <h3 style="color: #fff; margin-bottom: 10px;">Where are you located?</h3>
+                    <p style="color: var(--text-color);">We are based in the Student Activity Center, Main Campus.</p>
+                </div>
+                <div class="faq-item" style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px;">
+                    <h3 style="color: #fff; margin-bottom: 10px;">How can I sponsor an event?</h3>
+                    <p style="color: var(--text-color);">Please reach out to us via the contact form or email us at sponsorship@echelon.org.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">ECHELON</div>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/echelon.lpu/"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                </div>
+                <p>&copy; 2025 Echelon Student Organization. All Rights Reserved.</p>
+                <p style="font-size: 0.8rem; margin-top: 10px; color: #777;">Developed by <a href="https://www.wani.eu.org" target="_blank" style="color: var(--primary-color);">Marouf Wani</a></p>
+            </div>
+            <div class="back-to-top" onclick="scrollToTop()">
+                <i class="fas fa-rocket"></i>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

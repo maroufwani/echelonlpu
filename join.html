@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Us | Echelon</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Specific styles for select dropdown to match input theme */
+        .form-group select {
+            width: 100%;
+            padding: 10px 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #555;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            font-family: var(--font-main);
+            cursor: pointer;
+        }
+        
+        .form-group select option {
+            background: #111;
+            color: #fff;
+        }
+
+        /* Adjust label for select */
+        .form-group select:focus ~ label,
+        .form-group select:valid ~ label {
+            top: -20px;
+            font-size: 0.8rem;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">ECHELON<span class="dot">.</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <a href="registration-closed.html" class="btn-cta">Join Echelon</a>
+            <button class="mobile-toggle" aria-label="Toggle navigation">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Join Section -->
+    <section id="join" class="contact" style="padding-top: 150px;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Join The <span class="highlight">Revolution</span></h2>
+                <div class="separator"></div>
+                <p style="text-align: center; margin-top: 20px; color: var(--text-color);">Become a part of the future. Fill out the form below to apply.</p>
+            </div>
+            <div class="contact-wrapper">
+                <form id="join-form" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" required>
+                        <label for="name">Full Name</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" required>
+                        <label for="email">College Email</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="student-id" required>
+                        <label for="student-id">Student ID</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="form-group">
+                        <select id="domain" required>
+                            <option value="" disabled selected></option>
+                            <option value="technical">Technical</option>
+                            <option value="hr">HR</option>
+                            <option value="creativity">Creativity & Design</option>
+                            <option value="events">Event Coordinators</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="media">Media</option>
+                        </select>
+                        <label for="domain">Domain of Interest</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="reason" required></textarea>
+                        <label for="reason">Why do you want to join Echelon?</label>
+                        <div class="bar"></div>
+                    </div>
+                    <button type="submit" class="btn-submit">Submit Application</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">ECHELON</div>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/echelon.lpu/"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                </div>
+                <p>&copy; 2025 Echelon Student Organization. All Rights Reserved.</p>
+                <p style="font-size: 0.8rem; margin-top: 10px; color: #777;">Developed by <a href="https://www.wani.eu.org" target="_blank" style="color: var(--primary-color);">Marouf Wani</a></p>
+            </div>
+            <div class="back-to-top" onclick="scrollToTop()">
+                <i class="fas fa-rocket"></i>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Simple form handling for the join page
+        const joinForm = document.getElementById('join-form');
+        if (joinForm) {
+            joinForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const btn = e.target.querySelector('button');
+                const originalText = btn.innerText;
+                
+                btn.innerText = "Processing...";
+                
+                setTimeout(() => {
+                    btn.innerText = "Application Sent! 🚀";
+                    btn.style.background = "#00ff00";
+                    
+                    setTimeout(() => {
+                        btn.innerText = originalText;
+                        btn.style.background = "var(--primary-color)";
+                        e.target.reset();
+                    }, 2000);
+                }, 1500);
+            });
+        }
+    </script>
+</body>
+</html>
