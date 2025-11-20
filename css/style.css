@@ -1087,9 +1087,17 @@ footer {
     .navbar .btn-cta {
         display: none;
     }
+
+    /* Hide custom cursor on mobile */
+    .cursor, .cursor-follower {
+        display: none;
+    }
+    * {
+        cursor: auto !important;
+    }
 }
 
-@media (hover: none), (pointer: coarse) {
+@media (hover: none) {
     .cursor, .cursor-follower {
         display: none;
     }
