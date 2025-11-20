@@ -1089,7 +1089,7 @@ footer {
     }
 }
 
-@media (hover: none) {
+@media (hover: none), (pointer: coarse) {
     .cursor, .cursor-follower {
         display: none;
     }
