@@ -655,21 +655,30 @@ section {
     width: 150px;
     height: 150px;
     margin: 0 auto 20px;
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    border-radius: 50%;
     background: #333;
     position: relative;
     transition: 0.3s;
+    border: 3px solid var(--primary-color);
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+    overflow: hidden;
 }
 
 .hex-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.5s;
 }
 
 .team-member:hover .hex-image {
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px var(--primary-color);
+    border-color: #fff;
+}
+
+.team-member:hover .hex-image img {
     transform: scale(1.1);
-    box-shadow: 0 0 20px var(--primary-color);
 }
 
 .member-info h3 {
