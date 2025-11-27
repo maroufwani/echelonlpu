@@ -43,6 +43,29 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+
+    <script>
+        // Define callbacks globally in the head
+        function onRecaptchaSuccess() {
+            console.log("reCAPTCHA solved");
+            const btn = document.getElementById('submit-btn');
+            if (btn) {
+                btn.disabled = false;
+                btn.style.opacity = "1";
+                btn.style.cursor = "pointer";
+            }
+        }
+
+        function onRecaptchaExpired() {
+            console.log("reCAPTCHA expired");
+            const btn = document.getElementById('submit-btn');
+            if (btn) {
+                btn.disabled = true;
+                btn.style.opacity = "0.5";
+                btn.style.cursor = "not-allowed";
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -77,30 +100,33 @@
                 <div class="separator"></div>
             </div>
             <div class="contact-wrapper">
-                <form id="contact-form" class="contact-form" action="">
+                <form id="contact-form" class="contact-form">
                     <div class="form-group">
-                        <input type="text" id="name" required>
+                        <input type="text" id="name" name="name" required>
                         <label for="name">Name</label>
                         <div class="bar"></div>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" required>
+                        <input type="email" id="email" name="email" required>
                         <label for="email">Email</label>
                         <div class="bar"></div>
                     </div>
                     <div class="form-group">
-                        <textarea id="message" required></textarea>
+                        <textarea id="message" name="message" required></textarea>
                         <label for="message">Message</label>
                         <div class="bar"></div>
                     </div>
 
                     <!-- reCAPTCHA Widget -->
                     <div class="g-recaptcha" data-sitekey="6Le7MRosAAAAACr0ceRaw8FsI493_jmZRxvxc0AO"
-                        data-callback="enableSubmit" data-expired-callback="disableSubmit" style="margin-bottom: 20px;">
+                        data-callback="onRecaptchaSuccess" data-expired-callback="onRecaptchaExpired"
+                        style="margin-bottom: 20px;">
                     </div>
 
-                    <button type="submit" class="btn-submit" disabled style="opacity: 0.5; cursor: not-allowed;">Send
-                        Message</button>
+                    <button type="submit" id="submit-btn" class="btn-submit" disabled
+                        style="opacity: 0.5; cursor: not-allowed;">
+                        Send Message
+                    </button>
                 </form>
             </div>
 
@@ -163,103 +189,74 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="js/main.js"></script>
+
     <script>
-        // Form handling for the contact page
-        const contactForm = document.getElementById('contact-form');
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwR_3tZKrWEvOQXrWY8uf_olKkUO98PT8aplunPJajvitPBrTgK3p2IjDW4JLHiR7YdEA/exec';
-
-        // reCAPTCHA Callbacks
-        window.enableSubmit = function () {
-            console.log("reCAPTCHA solved: enableSubmit called");
-            const btn = document.querySelector('#contact-form button[type="submit"]');
-            if (btn) {
-                btn.disabled = false;
-                btn.style.opacity = "1";
-                btn.style.cursor = "pointer";
-                console.log("Submit button enabled");
-            } else {
-                console.error("Submit button not found");
-            }
+        document.addEventListener('DOMContentLoaded', () => {
             const form = document.getElementById('contact-form');
+            const btn = document.getElementById('submit-btn');
+            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwR_3tZKrWEvOQXrWY8uf_olKkUO98PT8aplunPJajvitPBrTgK3p2IjDW4JLHiR7YdEA/exec';
+
             if (form) {
-                form.action = SCRIPT_URL;
-                console.log("Form action updated to:", SCRIPT_URL);
-            } else {
-                console.error("Form not found");
-            }
-        }
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
 
-        window.disableSubmit = function () {
-            console.log("reCAPTCHA expired: disableSubmit called");
-            const btn = document.querySelector('#contact-form button[type="submit"]');
-            if (btn) {
-                btn.disabled = true;
-                btn.style.opacity = "0.5";
-                btn.style.cursor = "not-allowed";
-            }
-            const form = document.getElementById('contact-form');
-            if (form) {
-                form.action = "";
-            }
-        }
+                    // Double check reCAPTCHA
+                    if (grecaptcha.getResponse().length === 0) {
+                        alert("Please complete the reCAPTCHA.");
+                        return;
+                    }
 
-        if (contactForm) {
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const btn = e.target.querySelector('button');
-                const originalText = btn.innerText;
+                    const originalText = btn.innerText;
+                    btn.innerText = "Sending...";
+                    btn.disabled = true;
+                    btn.style.opacity = "0.7";
 
-                // Change button state
-                btn.innerText = "Sending...";
-                btn.disabled = true;
-                btn.style.opacity = "0.7";
+                    const formData = new FormData(form);
+                    formData.append('action', 'contact');
 
-                // Collect form data
-                const formData = new FormData();
-                formData.append('action', 'contact');
-                formData.append('name', document.getElementById('name').value);
-                formData.append('email', document.getElementById('email').value);
-                formData.append('message', document.getElementById('message').value);
+                    try {
+                        const response = await fetch(SCRIPT_URL, {
+                            method: 'POST',
+                            body: formData
+                        });
 
-                // Send data
-                fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    body: formData
-                })
-                    .then(response => response.json())
-                    .then(data => {
+                        const data = await response.json();
+
                         if (data.result === 'success') {
                             btn.innerText = "Message Sent! 🚀";
                             btn.style.background = "#00ff00";
-                            contactForm.reset();
+                            btn.style.color = "#000";
+
+                            form.reset();
                             grecaptcha.reset();
-                            disableSubmit();
+                            onRecaptchaExpired(); // Disable button
 
                             setTimeout(() => {
                                 btn.innerText = originalText;
-                                btn.style.background = "var(--primary-color)";
+                                btn.style.background = ""; // Reset to CSS default
+                                btn.style.color = "";
                             }, 3000);
                         } else {
                             throw new Error(data.error || 'Unknown error');
                         }
-                    })
-                    .catch(error => {
+                    } catch (error) {
                         console.error('Error:', error);
                         btn.innerText = "Error! Try Again";
                         btn.style.background = "#ff0000";
 
                         setTimeout(() => {
                             btn.innerText = originalText;
-                            btn.style.background = "var(--primary-color)";
+                            btn.style.background = "";
+                            // Re-enable if captcha is still valid (though we usually reset it on error too, but let's check)
                             if (grecaptcha.getResponse().length > 0) {
                                 btn.disabled = false;
                                 btn.style.opacity = "1";
-                                if (contactForm) contactForm.action = SCRIPT_URL;
                             }
                         }, 3000);
-                    });
-            });
-        }
+                    }
+                });
+            }
+        });
     </script>
 </body>
 

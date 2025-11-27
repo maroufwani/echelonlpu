@@ -22,7 +22,7 @@ if (cursor && follower) {
     document.addEventListener('mousemove', (e) => {
         cursor.style.left = e.clientX + 'px';
         cursor.style.top = e.clientY + 'px';
-        
+
         setTimeout(() => {
             follower.style.left = e.clientX + 'px';
             follower.style.top = e.clientY + 'px';
@@ -43,10 +43,10 @@ if (cursor && follower) {
 
 // Navigation
 // Smooth scroll for Explore the Future button
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     var exploreBtn = document.querySelector('.btn-explore');
     if (exploreBtn && exploreBtn.getAttribute('href') === '#domains') {
-        exploreBtn.addEventListener('click', function(e) {
+        exploreBtn.addEventListener('click', function (e) {
             e.preventDefault();
             var target = document.getElementById('domains');
             if (target) {
@@ -108,18 +108,18 @@ function initHeroAnimations() {
         duration: 1,
         ease: "power4.out"
     })
-    .from(".hero h2", {
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        delay: -0.5
-    })
-    .from(".btn-explore", {
-        y: 20,
-        autoAlpha: 0,
-        duration: 0.5,
-        clearProps: "all"
-    }, "+=0.7"); // Add 0.7s delay after h2
+        .from(".hero h2", {
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            delay: -0.5
+        })
+        .from(".btn-explore", {
+            y: 20,
+            autoAlpha: 0,
+            duration: 0.5,
+            clearProps: "all"
+        }, "+=0.7"); // Add 0.7s delay after h2
 }
 
 // Initialize animations immediately to set starting states
@@ -201,16 +201,16 @@ const closeModal = document.querySelector('.close-modal');
 const modalTitle = document.getElementById('modal-event-title');
 
 if (modal) {
-    window.openModal = function(eventName) {
+    window.openModal = function (eventName) {
         modal.style.display = "block";
         modalTitle.innerText = "Register for " + eventName;
     }
 
-    closeModal.onclick = function() {
+    closeModal.onclick = function () {
         modal.style.display = "none";
     }
 
-    window.onclick = function(event) {
+    window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
@@ -224,13 +224,13 @@ if (regForm) {
         e.preventDefault();
         const btn = e.target.querySelector('button');
         const originalText = btn.innerText;
-        
+
         btn.innerText = "Registering...";
-        
+
         setTimeout(() => {
             btn.innerText = "Success! 🎉";
             btn.style.background = "#00ff00";
-            
+
             setTimeout(() => {
                 modal.style.display = "none";
                 btn.innerText = originalText;
@@ -241,25 +241,7 @@ if (regForm) {
     });
 }
 
-const contactForm = document.getElementById('contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const btn = e.target.querySelector('button');
-        const originalText = btn.innerText;
-        
-        btn.innerText = "Sending...";
-        
-        setTimeout(() => {
-            btn.innerText = "Message Sent! 🚀";
-            
-            setTimeout(() => {
-                btn.innerText = originalText;
-                e.target.reset();
-            }, 2000);
-        }, 1500);
-    });
-}
+
 
 // Back to Top
 const backToTop = document.querySelector('.back-to-top');
@@ -273,7 +255,7 @@ if (backToTop) {
         }
     });
 
-    window.scrollToTop = function() {
+    window.scrollToTop = function () {
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
@@ -286,13 +268,13 @@ const counters = document.querySelectorAll('.counter');
 if (counters.length > 0) {
     counters.forEach(counter => {
         counter.innerText = '0';
-        
+
         const updateCounter = () => {
             const target = +counter.getAttribute('data-target');
             const c = +counter.innerText;
-            
+
             const increment = target / 200;
-            
+
             if (c < target) {
                 counter.innerText = `${Math.ceil(c + increment)}`;
                 setTimeout(updateCounter, 20);
@@ -300,7 +282,7 @@ if (counters.length > 0) {
                 counter.innerText = target;
             }
         };
-        
+
         // Trigger animation when in view
         ScrollTrigger.create({
             trigger: counter,
