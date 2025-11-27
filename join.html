@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join Us | Echelon</title>
-    <meta name="description" content="Apply to join Echelon. Be part of a community that fosters innovation and leadership.">
+    <meta name="description"
+        content="Apply to join Echelon. Be part of a community that fosters innovation and leadership.">
     <meta name="keywords" content="Join Echelon, Echelon Recruitment, Student Organization Application">
     <meta name="author" content="Echelon Student Organization">
     <meta name="robots" content="index, follow">
@@ -14,27 +16,31 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://echelonlpu.me/join.html">
     <meta property="og:title" content="Join Us | Echelon">
-    <meta property="og:description" content="Apply to join Echelon. Be part of a community that fosters innovation and leadership.">
+    <meta property="og:description"
+        content="Apply to join Echelon. Be part of a community that fosters innovation and leadership.">
     <meta property="og:image" content="https://echelonlpu.me/assets/images/og-image.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://echelonlpu.me/join.html">
     <meta property="twitter:title" content="Join Us | Echelon">
-    <meta property="twitter:description" content="Apply to join Echelon. Be part of a community that fosters innovation and leadership.">
+    <meta property="twitter:description"
+        content="Apply to join Echelon. Be part of a community that fosters innovation and leadership.">
     <meta property="twitter:image" content="https://echelonlpu.me/assets/images/og-image.jpg">
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
     <style>
@@ -51,21 +57,22 @@
             font-family: var(--font-main);
             cursor: pointer;
         }
-        
+
         .form-group select option {
             background: #111;
             color: #fff;
         }
 
         /* Adjust label for select */
-        .form-group select:focus ~ label,
-        .form-group select:valid ~ label {
+        .form-group select:focus~label,
+        .form-group select:valid~label {
             top: -20px;
             font-size: 0.8rem;
             color: var(--primary-color);
         }
     </style>
 </head>
+
 <body>
 
     <!-- Custom Cursor -->
@@ -96,10 +103,11 @@
             <div class="section-header">
                 <h2 class="section-title">Join The <span class="highlight">Revolution</span></h2>
                 <div class="separator"></div>
-                <p style="text-align: center; margin-top: 20px; color: var(--text-color);">Become a part of the future. Fill out the form below to apply.</p>
+                <p style="text-align: center; margin-top: 20px; color: var(--text-color);">Become a part of the
+                    future. Fill out the form below to apply.</p>
             </div>
             <div class="contact-wrapper">
-                <form id="join-form" class="contact-form">
+                <form id="join-form" class="contact-form" action="">
                     <div class="form-group">
                         <input type="text" id="name" required>
                         <label for="name">Full Name</label>
@@ -133,7 +141,14 @@
                         <label for="reason">Why do you want to join Echelon?</label>
                         <div class="bar"></div>
                     </div>
-                    <button type="submit" class="btn-submit">Submit Application</button>
+
+                    <!-- reCAPTCHA Widget -->
+                    <div class="g-recaptcha" data-sitekey="6Le7MRosAAAAACr0ceRaw8FsI493_jmZRxvxc0AO"
+                        data-callback="enableSubmit" data-expired-callback="disableSubmit" style="margin-bottom: 20px;">
+                    </div>
+
+                    <button type="submit" class="btn-submit" disabled style="opacity: 0.5; cursor: not-allowed;">Submit
+                        Application</button>
                 </form>
             </div>
         </div>
@@ -148,7 +163,9 @@
                     <a href="https://www.instagram.com/echelon.lpu/"><i class="fab fa-instagram"></i></a>
                 </div>
                 <p>&copy; 2025 Echelon Student Organization. All Rights Reserved.</p>
-                <p style="font-size: 0.8rem; margin-top: 10px; color: #777;">Developed by <a href="https://www.wani.eu.org" target="_blank" style="color: var(--primary-color);">Marouf Wani</a></p>
+                <p style="font-size: 0.8rem; margin-top: 10px; color: #777;">Developed by <a
+                        href="https://www.wani.eu.org" target="_blank" style="color: var(--primary-color);">Marouf
+                        Wani</a></p>
             </div>
             <div class="back-to-top" onclick="scrollToTop()">
                 <i class="fas fa-rocket"></i>
@@ -161,30 +178,99 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="js/main.js"></script>
     <script>
-        // Simple form handling for the join page
+        // Form handling for the join page
         const joinForm = document.getElementById('join-form');
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwR_3tZKrWEvOQXrWY8uf_olKkUO98PT8aplunPJajvitPBrTgK3p2IjDW4JLHiR7YdEA/exec';
+
+        // reCAPTCHA Callbacks
+        function enableSubmit() {
+            const btn = document.querySelector('#join-form button[type="submit"]');
+            if (btn) {
+                btn.disabled = false;
+                btn.style.opacity = "1";
+                btn.style.cursor = "pointer";
+            }
+            if (joinForm) {
+                joinForm.action = SCRIPT_URL;
+            }
+        }
+
+        function disableSubmit() {
+            const btn = document.querySelector('#join-form button[type="submit"]');
+            if (btn) {
+                btn.disabled = true;
+                btn.style.opacity = "0.5";
+                btn.style.cursor = "not-allowed";
+            }
+            if (joinForm) {
+                joinForm.action = "";
+            }
+        }
+
         if (joinForm) {
             joinForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 const btn = e.target.querySelector('button');
                 const originalText = btn.innerText;
-                
-                btn.innerText = "Processing...";
-                
-                setTimeout(() => {
-                    btn.innerText = "Application Sent! 🚀";
-                    btn.style.background = "#00ff00";
-                    
-                    setTimeout(() => {
-                        btn.innerText = originalText;
-                        btn.style.background = "var(--primary-color)";
-                        e.target.reset();
-                    }, 2000);
-                }, 1500);
+
+                // Change button state
+                btn.innerText = "Sending...";
+                btn.disabled = true;
+                btn.style.opacity = "0.7";
+
+                // Collect form data
+                const formData = new FormData();
+                formData.append('action', 'join');
+                formData.append('name', document.getElementById('name').value);
+                formData.append('email', document.getElementById('email').value);
+                formData.append('student_id', document.getElementById('student-id').value);
+                formData.append('domain', document.getElementById('domain').value);
+                formData.append('reason', document.getElementById('reason').value);
+
+                // Send data
+                fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.result === 'success') {
+                            btn.innerText = "Application Sent! 🚀";
+                            btn.style.background = "#00ff00";
+                            joinForm.reset();
+                            grecaptcha.reset(); // Reset reCAPTCHA
+                            disableSubmit(); // Disable button again
+
+                            setTimeout(() => {
+                                btn.innerText = originalText;
+                                btn.style.background = "var(--primary-color)";
+                            }, 3000);
+                        } else {
+                            throw new Error(data.error || 'Unknown error');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        btn.innerText = "Error! Try Again";
+                        btn.style.background = "#ff0000";
+
+                        setTimeout(() => {
+                            btn.innerText = originalText;
+                            btn.style.background = "var(--primary-color)";
+                            // Check if reCAPTCHA is still valid before re-enabling
+                            if (grecaptcha.getResponse().length > 0) {
+                                btn.disabled = false;
+                                btn.style.opacity = "1";
+                                if (joinForm) joinForm.action = SCRIPT_URL;
+                            }
+                        }, 3000);
+                    });
             });
         }
     </script>
 </body>
+
 </html>
