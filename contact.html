@@ -169,27 +169,37 @@
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwR_3tZKrWEvOQXrWY8uf_olKkUO98PT8aplunPJajvitPBrTgK3p2IjDW4JLHiR7YdEA/exec';
 
         // reCAPTCHA Callbacks
-        function enableSubmit() {
+        window.enableSubmit = function () {
+            console.log("reCAPTCHA solved: enableSubmit called");
             const btn = document.querySelector('#contact-form button[type="submit"]');
             if (btn) {
                 btn.disabled = false;
                 btn.style.opacity = "1";
                 btn.style.cursor = "pointer";
+                console.log("Submit button enabled");
+            } else {
+                console.error("Submit button not found");
             }
-            if (contactForm) {
-                contactForm.action = SCRIPT_URL;
+            const form = document.getElementById('contact-form');
+            if (form) {
+                form.action = SCRIPT_URL;
+                console.log("Form action updated to:", SCRIPT_URL);
+            } else {
+                console.error("Form not found");
             }
         }
 
-        function disableSubmit() {
+        window.disableSubmit = function () {
+            console.log("reCAPTCHA expired: disableSubmit called");
             const btn = document.querySelector('#contact-form button[type="submit"]');
             if (btn) {
                 btn.disabled = true;
                 btn.style.opacity = "0.5";
                 btn.style.cursor = "not-allowed";
             }
-            if (contactForm) {
-                contactForm.action = "";
+            const form = document.getElementById('contact-form');
+            if (form) {
+                form.action = "";
             }
         }
 
