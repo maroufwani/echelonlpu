@@ -103,7 +103,8 @@
             <div class="section-header">
                 <h2 class="section-title">Join The <span class="highlight">Revolution</span></h2>
                 <div class="separator"></div>
-                <p style="text-align: center; margin-top: 20px; color: var(--text-color);">Become a part of the
+                <p style="text-align: center; margin-top: 20px; color: var(--text-color);">Become a part
+                    of the
                     future. Fill out the form below to apply.</p>
             </div>
             <div class="contact-wrapper">
@@ -115,12 +116,36 @@
                     </div>
                     <div class="form-group">
                         <input type="email" id="email" required>
-                        <label for="email">College Email</label>
+                        <label for="email">Email Address</label>
                         <div class="bar"></div>
                     </div>
                     <div class="form-group">
                         <input type="text" id="student-id" required>
-                        <label for="student-id">Student ID</label>
+                        <label for="student-id">Registration Number</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="program" required>
+                        <label for="program">Program Name</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="contact-number" required>
+                        <label for="contact-number">Contact Number</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="whatsapp-number" required>
+                        <label for="whatsapp-number">WhatsApp Number</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="form-group">
+                        <select id="residence" required>
+                            <option value="" disabled selected></option>
+                            <option value="Hosteler">Hosteler</option>
+                            <option value="Day Scholar">Day Scholar</option>
+                        </select>
+                        <label for="residence">Residence Type</label>
                         <div class="bar"></div>
                     </div>
                     <div class="form-group">
@@ -134,6 +159,11 @@
                             <option value="media">Media</option>
                         </select>
                         <label for="domain">Domain of Interest</label>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="source" required>
+                        <label for="source">How did you get to know about Echelon?</label>
                         <div class="bar"></div>
                     </div>
                     <div class="form-group">
@@ -183,7 +213,7 @@
     <script>
         // Form handling for the join page
         const joinForm = document.getElementById('join-form');
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwtVQhhMkeCyWSqQ7QysUQjB5ZlYZusyCdHlbEonLMGm3AC8htOff12akNFI13N7qKdzQ/exec';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxE_1fDmvodwvyYALpnJwS7rzX5ULPEtXTx2ZP2eGRKf03wJumHT3FZ_iRPq4WD824/exec';
 
         // reCAPTCHA Callbacks
         window.enableSubmit = function () {
@@ -235,7 +265,12 @@
                 formData.append('name', document.getElementById('name').value);
                 formData.append('email', document.getElementById('email').value);
                 formData.append('student_id', document.getElementById('student-id').value);
+                formData.append('program', document.getElementById('program').value);
+                formData.append('contact_number', document.getElementById('contact-number').value);
+                formData.append('whatsapp_number', document.getElementById('whatsapp-number').value);
+                formData.append('residence', document.getElementById('residence').value);
                 formData.append('domain', document.getElementById('domain').value);
+                formData.append('source', document.getElementById('source').value);
                 formData.append('reason', document.getElementById('reason').value);
 
                 // Send data
